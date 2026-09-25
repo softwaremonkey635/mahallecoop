@@ -1,0 +1,12 @@
+{
+  "name": "MahalleCoop Demo",
+  "short_name": "MahalleCoop",
+  "description": "Mahalle alışverişi WhatsApp demoda: katalog, karar turları, pano, toplu sipariş.",
+  "lang": "tr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#14523F",
+  "background_color": "#F4E8D7"
+}

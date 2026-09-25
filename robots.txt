@@ -1,0 +1,4 @@
+# Bu statik demo yalnızca bağlantı ile paylaşılır.
+# Arama motorları indekslemesin.
+User-agent: *
+Disallow: /

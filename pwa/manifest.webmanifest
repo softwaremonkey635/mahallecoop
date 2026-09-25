@@ -1,0 +1,16 @@
+{
+  "name": "MahalleCoop Üye",
+  "short_name": "MahalleCoop",
+  "description": "Mahalle kooperatifi üye uygulaması: katalog, kalıcı sepet, tek ekran ödeme, sipariş geçmişi.",
+  "lang": "tr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#1E5B45",
+  "background_color": "#FBF7EF",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

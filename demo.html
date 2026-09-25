@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>MahalleCoop Demo</title>
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/phone.css">
+<link rel="stylesheet" href="css/portal.css">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    background: #e7ecef;
+    color: #111b21;
+  }
+  .mc-topbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: #0b141a;
+    color: #ffffff;
+    font-size: 13px;
+  }
+  .mc-brand { font-weight: 700; margin-right: auto; }
+  .mc-topbar label { display: flex; align-items: center; gap: 6px; }
+  .mc-topbar select {
+    font: inherit;
+    padding: 5px 8px;
+    border-radius: 6px;
+    border: 1px solid #2a3942;
+    background: #1f2c34;
+    color: #ffffff;
+  }
+  .mc-chip {
+    background: #1f2c34;
+    border: 1px solid #2a3942;
+    border-radius: 999px;
+    padding: 5px 10px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+  #reset-btn {
+    font: inherit;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #2a3942;
+    background: #1f2c34;
+    color: #ffffff;
+    cursor: pointer;
+  }
+  #reset-btn:hover { background: #2a3942; }
+  .mc-tabs {
+    display: none;
+    gap: 6px;
+    padding: 8px 12px 0;
+    background: #e7ecef;
+  }
+  .mc-tabs button {
+    flex: 1;
+    font: inherit;
+    padding: 8px;
+    border: 1px solid #ccd5db;
+    border-radius: 8px 8px 0 0;
+    background: #f7f9fa;
+    cursor: pointer;
+  }
+  .mc-tabs button.active {
+    background: #ffffff;
+    border-bottom-color: #ffffff;
+    font-weight: 600;
+  }
+  .mc-main {
+    display: flex;
+    gap: 18px;
+    padding: 16px;
+    align-items: flex-start;
+  }
+  .mc-pane { min-width: 0; }
+  #phone-app {
+    flex: 0 0 440px;
+    display: flex;
+    justify-content: center;
+  }
+  /* Portal pane is a block, never a flex row: the shell children
+     (head + cards) must stack in one column. */
+  #portal-app {
+    flex: 1 1 460px;
+    min-height: 320px;
+    background: #ffffff;
+    border: 1px solid #d0d7dd;
+    border-radius: 12px;
+    padding: 14px;
+    overflow: visible;
+  }
+  #portal-app:empty::after {
+    content: "Yükleniyor: portal (site/js/portal.js)";
+    color: #8696a0;
+    font-size: 13px;
+  }
+  .mc-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(11, 20, 26, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    padding: 16px;
+  }
+  .mc-modal[hidden] { display: none; }
+  .mc-card-form {
+    width: 100%;
+    max-width: 360px;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  }
+  .mc-card-form h2 { margin: 0 0 4px; font-size: 17px; }
+  .mc-card-form p.hint { margin: 0 0 12px; font-size: 12px; color: #667781; }
+  .mc-card-form label {
+    display: block;
+    font-size: 12px;
+    color: #3b4a54;
+    margin-bottom: 10px;
+  }
+  .mc-card-form input {
+    display: block;
+    width: 100%;
+    margin-top: 4px;
+    padding: 9px 10px;
+    border: 1px solid #ccd5db;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 14px;
+  }
+  .mc-card-row { display: flex; gap: 10px; }
+  .mc-card-row label { flex: 1; }
+  .mc-form-actions { display: flex; gap: 8px; margin-top: 6px; }
+  .mc-form-actions button {
+    flex: 1;
+    font: inherit;
+    padding: 10px;
+    border-radius: 8px;
+    border: 0;
+    cursor: pointer;
+  }
+  .mc-pay-go { background: #008069; color: #ffffff; }
+  .mc-pay-go:hover { background: #00725a; }
+  .mc-pay-cancel { background: #e9edef; color: #111b21; }
+  @media (max-width: 1023px) {
+    .mc-tabs { display: flex; }
+    .mc-main { display: block; padding: 0; }
+    .mc-pane { display: none; width: 100%; }
+    .mc-pane.active { display: flex; }
+    #portal-app.active { display: block; }
+    #phone-app:not(.active) { display: none; flex: none; padding-top: 8px; }
+    #phone-app.active { display: flex; }
+    #portal-app {
+      flex: none;
+      min-height: 70vh;
+      border-radius: 0;
+      border-left: 0;
+      border-right: 0;
+    }
+    /* Touch: every control in the shell reaches 44px on phones/tablets. */
+    .mc-topbar select,
+    #reset-btn,
+    .mc-tabs button { min-height: 44px; }
+  }
+  @media (min-width: 1024px) {
+    .mc-pane { display: flex !important; }
+    #portal-app { display: block !important; }
+  }
+</style>
+</head>
+<body>
+<header class="mc-topbar">
+  <div class="mc-brand">MahalleCoop Demo</div>
+  <label>Kimlik
+    <select id="identity-switcher">
+      <option value="ayse">Ayşe</option>
+      <option value="mehmet">Mehmet</option>
+      <option value="fatma">Fatma</option>
+      <option value="hasan">Hasan</option>
+    </select>
+  </label>
+  <span id="countdown" class="mc-chip">Pencere kapanışına ...</span>
+  <span id="savings" class="mc-chip">Bu hafta ~0 TL tasarruf</span>
+  <button id="reset-btn" type="button">Sıfırla</button>
+</header>
+
+<nav class="mc-tabs" aria-label="Bölümler">
+  <button type="button" class="active" data-pane="phone">📱 WhatsApp</button>
+  <button type="button" data-pane="portal">🏪 Portal</button>
+</nav>
+
+<main class="mc-main">
+  <section class="mc-pane active" id="phone-app" aria-label="WhatsApp sohbeti">
+    <div class="wa-phone">
+      <div class="wa-statusbar">
+        <span id="wa-clock">09:41</span>
+        <span class="wa-status-icons">▮▮▮ 📶 🔋</span>
+      </div>
+      <div class="wa-header">
+        <div class="wa-avatar">M</div>
+        <div class="wa-contact">
+          <div class="wa-name">MahalleCoop</div>
+          <div class="wa-presence">çevrimiçi</div>
+        </div>
+        <div class="wa-header-icons">📹 📷 ⋮</div>
+      </div>
+      <div class="wa-chat" id="wa-chat"></div>
+      <div class="wa-composer">
+        <span class="wa-emoji" aria-hidden="true">☺</span>
+        <span class="wa-attach" aria-hidden="true">📎</span>
+        <input class="wa-input" id="wa-input" type="text" placeholder="Mesaj yazın" autocomplete="off">
+        <span class="wa-camera" aria-hidden="true">📷</span>
+        <button class="wa-send" id="wa-send" type="button" aria-label="Gönder">➤</button>
+      </div>
+    </div>
+  </section>
+  <aside class="mc-pane" id="portal-app" aria-label="Bakkal portalı"></aside>
+</main>
+
+<div id="pay-modal" class="mc-modal" hidden>
+  <form id="pay-form" class="mc-card-form">
+    <h2>💳 Kart ile Öde (Demo)</h2>
+    <p class="hint">Sahte kart formu. Gerçek ödeme alınmaz, istenen değerler önemli değil.</p>
+    <label>Kart numarası
+      <input type="text" inputmode="numeric" placeholder="4242 4242 4242 4242" autocomplete="off">
+    </label>
+    <label>Kart üzerindeki isim
+      <input type="text" placeholder="AD SOYAD" autocomplete="off">
+    </label>
+    <div class="mc-card-row">
+      <label>Son kullanma
+        <input type="text" placeholder="12/30" autocomplete="off">
+      </label>
+      <label>CVC
+        <input type="text" inputmode="numeric" placeholder="123" autocomplete="off">
+      </label>
+    </div>
+    <div class="mc-form-actions">
+      <button type="button" class="mc-pay-cancel" id="pay-cancel">İptal</button>
+      <button type="submit" class="mc-pay-go">Ödemeyi Tamamla</button>
+    </div>
+  </form>
+</div>
+
+<script src="js/store.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/portal.js"></script>
+<script src="js/access-gate.js"></script>
+</body>
+</html>

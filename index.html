@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MahalleCoop statik demo: mahalle alışverişi WhatsApp sohbetinde, toplu sipariş tek fişte. MOCK mod, İzmit pilotu.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#14523F">
+  <title>MahalleCoop · Mahalle alışverişinin WhatsApp demosu</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./css/site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="wordmark" href="./index.html">Mahalle<span>Coop</span></a>
+      <nav class="site-nav" aria-label="Ana bağlantılar">
+        <a href="./demo.html">Demo</a>
+        <a href="./pwa/">📱 Üye Uygulaması (PWA)</a>
+        <a href="https://github.com/softwaremonkey635/mahallecoop" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+  <div class="awning" aria-hidden="true"></div>
+
+  <main>
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">İzmit pilot · statik demo</p>
+        <h1>Mahallenin sepeti WhatsApp'ta toplanır.</h1>
+        <p class="lede">
+          Bakkal siparişleri sohbette alınır, sipariş penceresi kapanınca sepetler
+          tek satın alma siparişinde birleşir. Aynı üründen alan sayısı artınca
+          fiyat kademeli düşer. Bu demo 1000'den fazla otomatik kontrolle ayakta duruyor; veriler
+          tarayıcınızda kalır, sunucuya bir şey gitmez.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="./demo.html">🚀 Demoyu Başlat</a>
+        </div>
+        <p class="fine">
+          MOCK mod: ödeme ve WhatsApp sahte, akışın tamamı gerçek. Telefonlar
+          hash'lenir, serbest metin loglanmaz.
+        </p>
+      </div>
+
+      <div
+        class="walk"
+        id="walk"
+        data-scene-count="14"
+        data-scene-index="0"
+        data-autoplay="true"
+        data-playing="false"
+        data-motion="auto"
+      >
+        <div class="walk-stage">
+          <div class="phone" id="walk-phone" aria-live="polite" aria-label="Canlı demo sahnesi">
+            <div class="phone-screen">
+              <div class="phone-status"><span>09:41</span><span>5G ▮▮▮ 87%</span></div>
+              <div class="phone-head">
+                <div class="phone-avatar">M</div>
+                <div>
+                  <div class="phone-title">MahalleCoop</div>
+                  <div class="phone-presence">çevrimiçi</div>
+                </div>
+              </div>
+              <div class="phone-chat" id="walk-chat"></div>
+              <div class="walk-fx" id="walk-fx" aria-hidden="true"></div>
+              <div class="phone-input">
+                <div class="fake-field">Mesaj yaz</div>
+                <div class="fake-send">➤</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="walk-meter">
+            <div class="walk-progress" id="walk-progress" aria-hidden="true">
+              <span class="walk-progress-fill" id="walk-progress-fill"></span>
+            </div>
+            <div class="walk-dots" id="walk-dots" role="group" aria-label="Sahne seçici">
+              <button type="button" class="walk-dot" data-scene="0" aria-label="Sahne 1"></button>
+              <button type="button" class="walk-dot" data-scene="1" aria-label="Sahne 2"></button>
+              <button type="button" class="walk-dot" data-scene="2" aria-label="Sahne 3"></button>
+              <button type="button" class="walk-dot" data-scene="3" aria-label="Sahne 4"></button>
+              <button type="button" class="walk-dot" data-scene="4" aria-label="Sahne 5"></button>
+              <button type="button" class="walk-dot" data-scene="5" aria-label="Sahne 6"></button>
+              <button type="button" class="walk-dot" data-scene="6" aria-label="Sahne 7"></button>
+              <button type="button" class="walk-dot" data-scene="7" aria-label="Sahne 8"></button>
+              <button type="button" class="walk-dot" data-scene="8" aria-label="Sahne 9"></button>
+              <button type="button" class="walk-dot" data-scene="9" aria-label="Sahne 10"></button>
+              <button type="button" class="walk-dot" data-scene="10" aria-label="Sahne 11"></button>
+              <button type="button" class="walk-dot" data-scene="11" aria-label="Sahne 12"></button>
+              <button type="button" class="walk-dot" data-scene="12" aria-label="Sahne 13"></button>
+              <button type="button" class="walk-dot" data-scene="13" aria-label="Sahne 14"></button>
+            </div>
+          </div>
+
+          <div class="walk-controls">
+            <button type="button" class="walk-btn" id="walk-prev">‹ Önceki</button>
+            <span class="walk-count" id="walk-count">Adım 1/14</span>
+            <button type="button" class="walk-btn" id="walk-next">Sonraki ›</button>
+            <button
+              type="button"
+              class="walk-btn"
+              id="walk-play"
+              aria-pressed="false"
+              aria-label="Demoyu oynat veya duraklat"
+            >▶ Oynat</button>
+          </div>
+
+          <aside class="walk-note">
+            <p class="walk-note-tag">sahne</p>
+            <h2 id="walk-title">KVKK kapısı</h2>
+            <p id="walk-caption">
+              Sohbet, telefon numarasının yalnızca sipariş bildirimleri için
+              kullanılacağını söyleyerek açılır. Onay vermeden katalog bile görünmez.
+            </p>
+            <a class="btn btn-primary" href="./demo.html">🚀 Demoyu Başlat</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="receipt-section wrap" aria-label="Örnek sipariş fişi">
+      <div class="receipt reveal">
+        <h2>Bakkal Hasan Dede</h2>
+        <p class="receipt-sub">örnek fiş · kademeli fiyat</p>
+        <div class="receipt-line">
+          <span>Sızma Zeytinyağı 5 L ×1</span>
+          <span>895,00</span>
+        </div>
+        <div class="receipt-line">
+          <span>Rize Çayı 1 kg ×3<small>3+ fiyat: 335,00</small></span>
+          <span>1.005,00</span>
+        </div>
+        <div class="receipt-line">
+          <span>Makarna 500 g ×6<small>6+ fiyat: 16,50</small></span>
+          <span>99,00</span>
+        </div>
+        <div class="receipt-line">
+          <span>Nohut 2 kg ×1</span>
+          <span>165,00</span>
+        </div>
+        <hr class="receipt-rule">
+        <div class="receipt-save">
+          <span>tasarruf</span>
+          <span>42,00 TL</span>
+        </div>
+        <div class="receipt-total">
+          <span>toplam</span>
+          <span>2.164,00 TL</span>
+        </div>
+        <hr class="receipt-rule">
+        <div class="receipt-barcode"></div>
+        <div class="receipt-code">MC 000 4242</div>
+      </div>
+    </section>
+
+    <section class="features wrap">
+      <h2 class="reveal">Demoda ne var?</h2>
+      <ul class="feature-grid">
+        <li class="shelf reveal">
+          <p class="shelf-tag">komut</p>
+          <h3>Katalog komutları</h3>
+          <p>
+            Sepete eklemek için ürün numarasını yazmak yetiyor. "4 2" yazan
+            4. üründen 2 adet alır. Alttaki adet 3'e ve 6'ya ulaşınca fiyat
+            kendiliğinden düşer. Yanlış numara girilirse liste geri geliyor.
+          </p>
+        </li>
+        <li class="shelf reveal">
+          <p class="shelf-tag">oy</p>
+          <h3>Karar turları</h3>
+          <p>
+            Mahalle bir ürünü istiyor mu oylama belli ediyor. Bakkal öneriyi
+            yayınlıyor, herkes 👍, 👎 veya 🤷 ile tek oy atıyor. Oy sayısı en
+            az 3, onay payı en az %60 olunca öneri ürüne dönüşüyor.
+          </p>
+        </li>
+        <li class="shelf reveal">
+          <p class="shelf-tag">pano</p>
+          <h3>Dayanışma panosu</h3>
+          <p>
+            Kırılan bir priz için yardım isteği, fazla ekmek için teklif.
+            İlanlarda telefon ve adres yazmak yasak; bakkal onaylıyor,
+            gerekirse sansürlüyor. İlk "Ben Yapabilirim" diyen eşleşiyor.
+          </p>
+        </li>
+        <li class="shelf reveal">
+          <p class="shelf-tag">toplu sipariş</p>
+          <h3>PO otomasyonu</h3>
+          <p>
+            Pencere kapanınca sepetler tek satın alma siparişinde (PO) birleşir.
+            Müşteri ödediğinde paylar fişte ayrışır: %90 tedarikçi, %5 bakkal,
+            %5 platform. Kasadan alınan ekstralar komisyona girmez.
+          </p>
+        </li>
+        <li class="shelf reveal">
+          <p class="shelf-tag">veri</p>
+          <h3>KVKK</h3>
+          <p>
+            Sohbet KVKK onayı ekranıyla açılıyor. Telefonlar hash'leniyor, not
+            ve öneri metinleri loglanmıyor. Bu demoda her şey tarayıcının kendi
+            hafızasında (localStorage) duruyor; hiçbir kayıt dışarı çıkmıyor.
+          </p>
+        </li>
+        <li class="shelf reveal">
+          <p class="shelf-tag">uygulama</p>
+          <h3>Üye Uygulaması (PWA)</h3>
+          <p>
+            Telefona eklenen üye uygulaması katalogu, kalıcı sepeti ve
+            sipariş geçmişini tek yerde tutar, ödemeyi tek ekranda toplar.
+            İlk açılıştan sonra internet olmadan da açılır.
+          </p>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>MahalleCoop statik demo · 1000'den fazla otomatik kontrol · MOCK mod · İzmit pilotu</p>
+      <div class="footer-links">
+        <a href="./demo.html">Demoyu aç</a>
+        <a href="https://github.com/softwaremonkey635/mahallecoop" target="_blank" rel="noopener">GitHub deposu</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/walkthrough-scenes.js" defer></script>
+  <script src="./js/walkthrough.js" defer></script>
+  <script src="./js/landing.js" defer></script>
+  <script src="./js/access-gate.js"></script>
+</body>
+</html>

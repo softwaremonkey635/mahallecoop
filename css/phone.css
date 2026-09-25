@@ -1,0 +1,372 @@
+/* WhatsApp light theme phone styling for the MahalleCoop demo (S1).
+   Colors and layout follow site/SPEC.md fidelity section. */
+
+.wa-phone {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 420px;
+  height: min(78vh, 760px);
+  margin: 0 auto;
+  border: 10px solid #1b1b1b;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #efeae2;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #111b21;
+}
+
+.wa-statusbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #008069;
+  color: #ffffff;
+  font-size: 11px;
+  padding: 4px 14px 2px;
+  flex: 0 0 auto;
+}
+
+.wa-statusbar .wa-status-icons {
+  letter-spacing: 2px;
+}
+
+.wa-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #008069;
+  color: #ffffff;
+  padding: 6px 12px 10px;
+  flex: 0 0 auto;
+}
+
+.wa-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #0ca181;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 16px;
+  flex: 0 0 auto;
+}
+
+.wa-contact {
+  min-width: 0;
+  flex: 1;
+}
+
+.wa-name {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.wa-presence {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+.wa-header-icons {
+  font-size: 15px;
+  letter-spacing: 4px;
+  opacity: 0.95;
+}
+
+.wa-chat {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 10px 12px 14px;
+  background-color: #efeae2;
+  background-image:
+    radial-gradient(circle at 18px 22px, rgba(0, 0, 0, 0.035) 2px, transparent 2px),
+    radial-gradient(circle at 48px 58px, rgba(0, 0, 0, 0.03) 1.5px, transparent 2px),
+    radial-gradient(circle at 74px 26px, rgba(255, 255, 255, 0.35) 3px, transparent 3px),
+    radial-gradient(circle at 30px 84px, rgba(0, 0, 0, 0.025) 2.5px, transparent 2.5px);
+  background-size: 96px 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.wa-row {
+  display: flex;
+  max-width: 100%;
+}
+
+.wa-row.bot {
+  justify-content: flex-start;
+}
+
+.wa-row.user {
+  justify-content: flex-end;
+}
+
+.wa-row.system {
+  justify-content: center;
+}
+
+.wa-bubble {
+  position: relative;
+  max-width: 84%;
+  padding: 6px 9px 4px;
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 1.42;
+  word-break: break-word;
+  box-shadow: 0 1px 0.5px rgba(11, 20, 26, 0.13);
+}
+
+.wa-row.bot .wa-bubble {
+  background: #ffffff;
+  color: #111b21;
+  border-top-left-radius: 2px;
+}
+
+.wa-row.bot .wa-bubble::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -7px;
+  width: 8px;
+  height: 13px;
+  background: #ffffff;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+.wa-row.user .wa-bubble {
+  background: #d9fdd3;
+  color: #111b21;
+  border-top-right-radius: 2px;
+}
+
+.wa-row.user .wa-bubble::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -7px;
+  width: 8px;
+  height: 13px;
+  background: #d9fdd3;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.wa-row.system .wa-bubble {
+  background: #ffefc2;
+  color: #54656f;
+  font-size: 12.5px;
+  text-align: center;
+}
+
+.wa-text {
+  white-space: normal;
+}
+
+.wa-meta {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+  margin-top: 1px;
+  font-size: 11px;
+  color: #667781;
+}
+
+.wa-ticks {
+  color: #53bdeb;
+  font-size: 12px;
+  letter-spacing: -2px;
+}
+
+.wa-reply {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 7px;
+  border-top: 1px solid #e9edef;
+}
+
+.wa-reply-btn {
+  appearance: none;
+  border: 0;
+  border-top: 1px solid #e9edef;
+  background: transparent;
+  color: #027eb5;
+  font-size: 14.5px;
+  font-weight: 500;
+  text-align: center;
+  padding: 10px 8px;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.wa-reply-btn:first-child {
+  border-top: 0;
+}
+
+.wa-reply-btn:hover {
+  background: #f5f6f6;
+}
+
+.wa-reply-btn:active {
+  background: #e9edef;
+}
+
+.wa-bubble.type-buttons .wa-reply {
+  margin-left: -9px;
+  margin-right: -9px;
+  margin-bottom: -4px;
+}
+
+.wa-bubble.type-list .wa-reply,
+.wa-list-options .wa-reply {
+  margin-left: -9px;
+  margin-right: -9px;
+}
+
+.wa-list {
+  margin-top: 7px;
+  margin-left: -9px;
+  margin-right: -9px;
+  margin-bottom: -4px;
+  border-top: 1px solid #e9edef;
+}
+
+.wa-list-toggle {
+  appearance: none;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: #027eb5;
+  font-size: 14.5px;
+  font-weight: 600;
+  padding: 11px 8px;
+  cursor: pointer;
+}
+
+.wa-list-toggle:hover {
+  background: #f5f6f6;
+}
+
+.wa-list-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.wa-list-options .wa-reply-btn {
+  border-top: 1px solid #e9edef;
+}
+
+.wa-row.typing .wa-bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 52px;
+  padding: 12px 14px;
+}
+
+.wa-typing span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #8696a0;
+  animation: wa-blink 1.2s infinite both;
+}
+
+.wa-typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.wa-typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes wa-blink {
+  0%,
+  60%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+.wa-composer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  background: #f0f2f5;
+  flex: 0 0 auto;
+}
+
+.wa-composer .wa-emoji,
+.wa-composer .wa-attach,
+.wa-composer .wa-camera {
+  font-size: 20px;
+  color: #54656f;
+  width: 28px;
+  text-align: center;
+  flex: 0 0 auto;
+  user-select: none;
+}
+
+.wa-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  border-radius: 18px;
+  background: #ffffff;
+  padding: 9px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #111b21;
+}
+
+.wa-input::placeholder {
+  color: #8696a0;
+}
+
+.wa-send {
+  appearance: none;
+  border: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #008069;
+  color: #ffffff;
+  font-size: 16px;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.wa-send:hover {
+  background: #00725a;
+}
+
+@media (max-width: 1023px) {
+  .wa-reply-btn,
+  .wa-input,
+  .wa-send,
+  .wa-list-toggle {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wa-phone {
+    border-width: 0;
+    border-radius: 0;
+    height: calc(100vh - 140px);
+    max-width: none;
+  }
+}

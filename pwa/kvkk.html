@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="robots" content="noindex, nofollow, noarchive"/>
+<meta name="referrer" content="no-referrer"/>
+<meta name="theme-color" content="#1E5B45"/>
+<title>KVKK Aydınlatma Metni · MahalleCoop Üye</title>
+<link rel="icon" href="./icons/icon.svg" type="image/svg+xml"/>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #f4f2ee;
+    color: #1c1c1c;
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  header.ust {
+    background: #1e5b45;
+    color: #fff;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  header.ust .marka-ad { font-weight: 700; letter-spacing: 0.02em; }
+  header.ust a {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 999px;
+    padding: 6px 14px;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  main {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 20px 16px 56px;
+  }
+  h1 { font-size: 1.5rem; line-height: 1.25; margin: 0 0 8px; }
+  h2 { font-size: 1.12rem; margin: 28px 0 8px; }
+  p, li { margin: 8px 0; }
+  ul, ol { padding-left: 1.3em; }
+  .taslak {
+    background: #fff6e5;
+    border: 1px solid #e0b464;
+    border-left: 5px solid #c98a1b;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin: 16px 0 24px;
+    font-size: 0.95rem;
+  }
+  .taslak strong { display: block; margin-bottom: 4px; }
+  .kart {
+    background: #fff;
+    border: 1px solid #e2e0da;
+    border-radius: 12px;
+    padding: 4px 16px 12px;
+    margin: 14px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    margin: 10px 0;
+  }
+  th, td {
+    border: 1px solid #dedbd4;
+    padding: 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: #eef3f0; font-weight: 600; }
+  code {
+    background: #eef1ee;
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 0.9em;
+  }
+  .isaret {
+    background: #eef3f0;
+    border-radius: 4px;
+    padding: 0 4px;
+    font-size: 0.9em;
+    white-space: nowrap;
+  }
+  footer {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+    font-size: 0.9rem;
+    color: #555;
+  }
+</style>
+</head>
+<body>
+<header class="ust">
+  <span class="marka-ad">MahalleCoop · Üye</span>
+  <a href="./index.html">Uygulamaya dön</a>
+</header>
+
+<main>
+  <h1>KVKK Aydınlatma Metni</h1>
+  <p>Kişisel verilerinizi 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında nasıl işlediğimizi anlatan metindir.</p>
+
+  <div class="taslak">
+    <strong>Taslak. Avukat incelemesi ve onayı gerekli.</strong>
+    Bu metin kesin hâli değildir. Bazı maddeler <span class="isaret">[UNVERIFIED]</span> ile işaretlidir.
+    Alt çizgilerle gösterilen yer tutucular pilot sahibi tarafından doldurulur.
+  </div>
+
+  <h2>1. Veri sorumlusu</h2>
+  <ul>
+    <li>Unvan: <code>____</code> (kooperatif / dernek / şirket)</li>
+    <li>Adres: <code>____</code></li>
+    <li>E-posta: <code>____</code></li>
+    <li>Telefon: <code>____</code></li>
+  </ul>
+  <p>Veri sorumlusu kimdir, avukat karar verir. <span class="isaret">[UNVERIFIED]</span></p>
+
+  <h2>2. Hangi veriler işleniyor</h2>
+  <table>
+    <thead>
+      <tr><th>Veri</th><th>Saklama biçimi</th><th>Kaynak</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Telefon numarası</td><td>SHA-256 hash (anahtar), ayrıca AES-256-GCM şifreli kopya</td><td><code>src/db/crypto.ts</code>, <code>prisma/schema.prisma</code></td></tr>
+      <tr><td>Ad</td><td>düz metin, <code>User.name</code></td><td>şema</td></tr>
+      <tr><td>KVKK onay zamanı</td><td><code>User.kvkkConsentAt</code></td><td>şema</td></tr>
+      <tr><td>Sipariş kaydı</td><td>ürün, adet, birim fiyat, toplam, durum, teslim kodu, saat</td><td><code>Order</code>, <code>OrderItem</code></td></tr>
+      <tr><td>Serbest not ve pano metinleri</td><td>en fazla 250 karakter, loglarda yalnızca uzunluk</td><td><code>Order.bakkalNote</code>, <code>AidPost</code></td></tr>
+      <tr><td>Ödeme payı kayıtları</td><td>tedarikçi, bakkal, platform payları ve stopaj/KDV kalemleri</td><td><code>Transaction</code></td></tr>
+      <tr><td>Oylama kayıtları</td><td>öneri, oy tercihi, tur</td><td><code>DecisionRound</code>, <code>Proposal</code>, <code>Vote</code></td></tr>
+      <tr><td>Dayanışma kayıtları</td><td>talep veya teklif metni, eşleşme durumu</td><td><code>AidPost</code></td></tr>
+    </tbody>
+  </table>
+  <p>Üye adresi, doğum tarihi, kimlik numarası ve sağlık verisi toplanmaz. <span class="isaret">[VERIFIED: şemada bu alanlar yok]</span></p>
+
+  <h2>3. İşleme amaçları</h2>
+  <ol>
+    <li>Siparişin alınması, hazırlanması ve teslim edilmesi.</li>
+    <li>Ödemenin işlenmesi ve payların bölünmesi.</li>
+    <li>Kooperatif yönetimi: talep turu, dayanışma panosu, bülten.</li>
+    <li>Yasal yükümlülükler: vergi kayıtları, stopaj, fatura.</li>
+    <li>Destek ve şikâyet kayıtları.</li>
+  </ol>
+
+  <h2>4. Hukuki sebep ve onay</h2>
+  <ul>
+    <li>Sipariş ve ödeme: sözleşmenin kurulması ve ifası ile açık rıza.</li>
+    <li>Pazarlama mesajları: ayrı ve geri alınabilir açık rıza.</li>
+    <li>Onay ekranları birleştirilmez. Üyelik onayı, veri işleme onayı ve pazarlama onayı ayrıdır. Pazarlama onayı hizmet tamamlandıktan sonra istenir. <span class="isaret">[UNVERIFIED]</span></li>
+  </ul>
+
+  <h2>5. Saklama süresi</h2>
+  <ul>
+    <li>Kesin süre takvimi belirlenmedi. <span class="isaret">[UNVERIFIED]</span></li>
+    <li>Pilot boyunca kayıtlar tutulur. Silme talepleri elle işlenir, otomatik silme programı yok. <span class="isaret">[VERIFIED: kodda silme akışı yok]</span></li>
+    <li>Vergi kayıtlarının süresi ilgili mevzuattan gelir. Süreyi avukat ve muhasebeci birlikte teyit edecek. <span class="isaret">[UNVERIFIED]</span></li>
+  </ul>
+
+  <h2>6. Kimlerle paylaşılıyor</h2>
+  <ul>
+    <li>WhatsApp ve Meta: mesajlaşma altyapısı. Mesaj içeriği bu hatta gider.</li>
+    <li>Ödeme kuruluşu (PayTR): canlıya geçişte. Şu an taklit mod. <span class="isaret">[VERIFIED: HANDOFF.md]</span></li>
+    <li>Tedarikçi: toplu sipariş listesi (SKU, adet, tutar). Telefon ve ad yok. <span class="isaret">[VERIFIED: PO CSV başlıkları]</span></li>
+    <li>Bakkal: üye adı ve maskeli telefon, teslim kartında.</li>
+    <li>Vergi müşaviri: ödeme payı kayıtları.</li>
+  </ul>
+  <p>Yurt dışı aktarım: Meta sunucuları Türkiye dışında olabilir. Bu aktarım için açık rıza ve ek aydınlatma gerekir. <span class="isaret">[UNVERIFIED, avukat kararı]</span></p>
+
+  <h2>7. Güvenlik önlemleri</h2>
+  <ul>
+    <li>Anahtar dizinde ham telefon tutulmaz, birincil anahtar SHA-256 hash'tir.</li>
+    <li>Ham telefon AES-256-GCM ile şifrelenir, anahtar <code>KVKK_ENCRYPTION_KEY</code> ortam değişkenindedir. <span class="isaret">[VERIFIED: src/db/crypto.ts]</span></li>
+    <li>KVKK onayına basılmadan üyeye hiçbir mesaj gönderilmez.</li>
+    <li>Loglara ham telefon yazılmaz, eski loglar temizlendi. <span class="isaret">[VERIFIED: PROGRESS.md, 2026-08-11 denetimi]</span></li>
+    <li>Teslim uç noktasında dakikada 30 istek sınırı vardır. <span class="isaret">[VERIFIED: PROGRESS.md, dalga 1 denetimi]</span></li>
+  </ul>
+  <p>Dürüst eksikler: hash'te tuz (pepper) yok, portal oturum doğrulaması henüz yok, pilot veritabanı SQLite, üye silme ve saklama süresi otomasyonu yok. <span class="isaret">[VERIFIED: HANDOFF.md açık kalemler]</span></p>
+
+  <h2>8. Haklarınız (KVKK m. 11)</h2>
+  <ol>
+    <li>Verilerinizin işlenip işlenmediğini öğrenme.</li>
+    <li>Yanlış veya eksik verinin düzeltilmesini isteme.</li>
+    <li>Silinmesini veya yok edilmesini isteme.</li>
+    <li>İşlemeye itiraz etme.</li>
+    <li>İşlemenin kısıtlanmasını isteme.</li>
+  </ol>
+  <p>Başvuru yolu: <code>____</code>. Yanıt yasal süre içinde verilir. <span class="isaret">[UNVERIFIED: süre takvimi avukatça teyit edilecek]</span></p>
+
+  <h2>9. Uygulamadaki onay davranışı</h2>
+  <ul>
+    <li>Sipariş ekranındaki onay kutusu işaretlenmeden sipariş sunucuya gitmez, yalnız bu cihazda saklanır.</li>
+    <li>Onay anı <code>User.kvkkConsentAt</code> alanına yazılır.</li>
+    <li>WhatsApp tarafında ilk ekran KVKK onay ekranıdır. <code>ACCEPT_KVKK</code> butonuna basılmadan katalog açılmaz.</li>
+    <li>Kaynaklar: <code>src/db/crypto.ts</code> (hash ve şifreleme), <code>prisma/schema.prisma</code> (alanlar), <code>src/whatsapp/flow.ts</code> (onay kapısı), <code>src/whatsapp/index.ts</code> (loglarda hash).</li>
+  </ul>
+
+  <h2>10. Sorumluluk</h2>
+  <p>Bu metin taslaktır. Avukat onayı olmadan üyeyle paylaşılmaz. Metindeki <span class="isaret">[UNVERIFIED]</span> işaretleri, onay öncesinde kapatılacak maddelerdir.</p>
+</main>
+
+<footer>
+  <p>Kaynak dosya: <code>docs/pilot/kvkk-aydinlatma.md</code>. Sorularınız için <code>____</code> adresine yazabilirsiniz.</p>
+  <p><a href="./index.html">Uygulamaya dön</a></p>
+</footer>
+</body>
+</html>
