@@ -533,7 +533,7 @@
       '</textarea></div>' +
       '<div class="kutu"><h3>KVKK onayı</h3>' +
       '<label class="kvkk-onay"><input type="checkbox" id="kvkk-onay" />' +
-      '<a href="./kvkk.html">KVKK aydınlatmasını okudum, onaylıyorum</a>' +
+      '<a href="../kvkk.html">KVKK aydınlatmasını okudum, onaylıyorum</a>' +
       '</label>' +
       '<p class="fiyat-not">Onaylamadan sipariş sunucuya gitmez, yalnız bu cihazda saklanır.</p>' +
       '</div>' +
